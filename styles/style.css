@@ -64,9 +64,7 @@ input[type='search'] {
   cursor: pointer;
   height: 2rem;
   border-radius: 0.25rem;
-  padding: 0.125rem 0.75rem;
-  white-space: nowrap;
-  /* flex-grow, flex-shrink, flex-basis 순서 */
+  padding: var(--spacing-sxxs) var(--spacing-sm);
   flex: 0 0 auto;
   font-size: var(--text-sm);
 }
@@ -87,6 +85,13 @@ input[type='search'] {
   background: transparent;
   color: var(--secondary-color);
   border: 1px solid currentColor;
+}
+
+/* 공통 메인 메뉴 */
+.menu__link {
+  display: block;
+  font-size: var(--text-md);
+  font-weight: 700;
 }
 
 /* WHAT 모바일 디바이스 (Mobile Device) */
@@ -110,56 +115,12 @@ input[type='search'] {
 
   /* 모바일 메인메뉴 제어버튼 */
   .buttonWrapper {
+    padding: var(--spacing-xxs);
     overflow: hidden;
     position: absolute;
     top: 3.75rem;
     right: var(--spacing-lg);
-    padding: 0.25rem;
-  }
-  .button--burger {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-  }
-
-  .button--burger:focus {
-    outline-offset: 2px;
-  }
-
-  .button--burgerBarTop,
-  .button--burgerBarMiddle,
-  .button--burgerBarBottom {
-    width: 100%;
-    height: 20%;
-    background: var(--white);
-    border-radius: 20px;
-    transition: all 350ms;
-  }
-
-  .is--active .button--burgerBarTop {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-  }
-
-  .is--active .button--burgerBarMiddle {
-    transform: translateX(-150%);
-  }
-
-  .is--active .button--burgerBarBottom {
-    position: relative;
-    top: -50%;
-    transform: translateY(50%) rotate(-45deg);
-  }
-  */ .buttonWrapper {
-    padding: 0.25rem;
-    overflow: hidden;
-    position: absolute;
-    top: 3.75rem;
-    right: var(--spacing-lg);
-    transform: translate(0.25rem, -0.25rem);
+    transform: translate(-0.25rem, -0.25rem);
   }
 
   .button--burger {
@@ -175,6 +136,7 @@ input[type='search'] {
   .button--burgerBarTop,
   .button--burgerBarMiddle,
   .button--burgerBarBottom {
+    pointer-events: none;
     position: absolute;
     width: 100%;
     height: 20%;
@@ -198,20 +160,45 @@ input[type='search'] {
     transform: translateY(-100%);
   }
 
-  .button--burger.is--active .button--burgerBarMiddle {
-    transform: translate(-150%, -50%);
-  }
-
   .button--burger.is--active .button--burgerBarTop {
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
+  }
+
+  .button--burger.is--active .button--burgerBarMiddle {
+    transform: translate(-150%, -50%);
   }
 
   .button--burger.is--active .button--burgerBarBottom {
     top: 50%;
     transform: translateY(-50%) rotate(-45deg);
   }
-  /* 모바일 메뉴 제어 버튼 종료 */
+
+  /* 모바일 메인메뉴 */
+  .menu__list {
+    background: var(--secondary-color);
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    padding: var(--spacing-lg);
+    transform: translateX(-150%);
+  }
+
+  .menu__item {
+    border-bottom: 1px solid var(--silver);
+  }
+
+  .menu__link {
+    padding: var(--spacing-xs);
+  }
+
+  .menu.is--active .menu__list {
+    transform: none;
+  }
 }
 
 /* WHAT 데스크탑 디바이스 (Desktop Device) */
@@ -221,7 +208,6 @@ input[type='search'] {
     max-width: var(--container-width);
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(19, 168, 44);
   }
 
   /* 데스크탑 로고 */
@@ -243,6 +229,31 @@ input[type='search'] {
   /* 데스크탑 메인메뉴 제어버튼 */
   .button--burger {
     display: none;
+  } /* WHAT 앱네비게이션 메뉴 */
+  .appNavigation {
+    height: 90px;
+    background-color: var(--secondary-color);
+  }
+
+  .menu__list {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container-width);
+    height: 100%;
+    margin: auto;
+    color: #fff;
+    text-shadow: 2px 2px #333;
+  }
+
+  .menu__item {
+    padding: var(--spacing-sm) 0;
+  }
+
+  .menu__link {
+    display: block;
+    padding: var(--spacing-base) var(--spacing-lg);
   }
 }
 
