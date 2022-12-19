@@ -97,11 +97,9 @@
 
   // 메뉴, 메뉴 열기 버튼이 활성화 된 상태에서 창 크기 조정 시, 활성 클래스 제거
   window.addEventListener('resize', function (e) {
-    setTimeout(() => {
-      if (btn.classList.contains('is--active')) {
-        btn.classList.remove('is--active');
-        menu.classList.remove('is--active');
-      }
-    }, '1000');
+    if (btn.classList.contains('is--active')) {
+      btn.classList.remove('is--active');
+      menu.classList.remove('is--active');
+    }
   });
 })();
